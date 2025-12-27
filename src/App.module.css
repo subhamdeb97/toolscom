@@ -1,0 +1,24 @@
+.appContainer {
+    display: flex;
+    flex-direction: column;
+    /* Stack Navbar and Main vertically */
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.mainContent {
+    flex: 1;
+    padding: 2rem;
+    /* Space for fixed sidebar on desktop */
+    overflow-y: auto;
+    transition: margin-right 0.3s ease;
+    width: 100%;
+}
+
+/* Mobile: Remove margin so content takes full width */
+@media (max-width: 900px) {
+    .mainContent {
+        margin-right: 0;
+        padding: 1rem;
+    }
+}

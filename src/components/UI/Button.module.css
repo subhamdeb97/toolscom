@@ -1,0 +1,70 @@
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    gap: var(--space-sm);
+    outline: none;
+}
+
+.button:focus-visible {
+    box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--accent-primary);
+}
+
+/* Variants */
+.primary {
+    background: var(--accent-primary);
+    color: white;
+}
+
+.primary:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.primary:active {
+    transform: translateY(0);
+}
+
+.secondary {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.secondary:hover {
+    background: var(--border-color);
+    border-color: var(--text-secondary);
+}
+
+.danger {
+    background: rgba(220, 38, 38, 0.1);
+    /* Red 600 with opacity */
+    color: #ef4444;
+    /* Red 500 */
+    border: 1px solid rgba(220, 38, 38, 0.2);
+}
+
+.danger:hover {
+    background: rgba(220, 38, 38, 0.2);
+}
+
+/* Sizes */
+.sm {
+    padding: 0.25rem 0.75rem;
+    font-size: 0.875rem;
+}
+
+.md {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+}
+
+.lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.125rem;
+}

@@ -1,0 +1,78 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+    height: 100%;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cardHeader {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+}
+
+.cardHeader h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.rangeWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+}
+
+.range {
+    width: 100%;
+    accent-color: var(--accent-primary);
+}
+
+.previewCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cardHeader {
+    align-self: flex-start;
+    width: 100%;
+}
+
+.canvasWrapper {
+    background: white;
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-lg);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.actions {
+    display: flex;
+    gap: var(--space-md);
+}
