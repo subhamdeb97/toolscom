@@ -37,6 +37,7 @@ export const tools = [
     { id: 'img-compress', title: 'Image Compressor', description: 'Compress PNG/JPG/WebP', category: 'Image', path: '/image/compressor', icon: Image },
     { id: 'img-resize', title: 'Image Resizer', description: 'Resize images', category: 'Image', path: '/image/resizer', icon: Image },
     { id: 'img-base64', title: 'Image to Base64', description: 'Convert image to Base64', category: 'Image', path: '/image/to-base64', icon: Image },
+    { id: 'img-ocr', title: 'Smart Text Extractor', description: 'Extract text from Images (OCR) or Excel files', category: 'Image', path: '/image/ocr', icon: Image },
     { id: 'qr-code', title: 'QR Generator', description: 'Create and download QR codes', category: 'Image', path: '/qr-code', icon: Image, status: 'ready' },
     { id: 'color-picker', title: 'Color Picker', description: 'Pick and convert colors', category: 'Image', path: '/image/color-picker', icon: Image },
 

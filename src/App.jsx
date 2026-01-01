@@ -49,6 +49,7 @@ import ColorPicker from './pages/Image/ColorPicker';
 import ImageResizer from './pages/Image/ImageResizer';
 import ImageToBase64 from './pages/Image/ImageToBase64';
 import ImageCompressor from './pages/Image/ImageCompressor';
+import OcrTool from './pages/Image/OcrTool';
 
 // Math Tools
 import UnitConverter from './pages/Math/UnitConverter';
@@ -105,12 +106,20 @@ const COMPONENT_MAP = {
   'img-resize': ImageResizer,
   'img-base64': ImageToBase64,
   'img-compress': ImageCompressor,
+  'img-ocr': OcrTool,
 
   // Math
   'unit-convert': UnitConverter,
   'percent-calc': PercentageCalculator,
   'date-diff': DateCalculator
 };
+
+// Auth Pages
+import LoginPage from './pages/Auth/LoginPage';
+import ProfilePage from './pages/Auth/ProfilePage';
+import SettingsPage from './pages/Auth/SettingsPage';
+
+// ... (previous imports)
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -124,6 +133,10 @@ function App() {
           <div style={{ width: '100%', margin: '0 auto' }}>
             <Routes>
               <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/profile" element={<ProfilePage />} />
+              <Route path="/settings" element={<SettingsPage />} />
+
               {tools.map(tool => {
                 const Component = COMPONENT_MAP[tool.id] || (() => <ComingSoonPage title={tool.title} />);
                 return (

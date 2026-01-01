@@ -18,6 +18,13 @@
   --glass-bg: rgba(23, 23, 23, 0.7);
   --glass-border: rgba(255, 255, 255, 0.1);
 
+  /* Input defaults (Dark) */
+  --input-bg: rgba(30, 41, 59, 0.5);
+  --input-border: rgba(255, 255, 255, 0.1);
+  --input-focus-bg: rgba(30, 41, 59, 0.8);
+
+  --heading-gradient: linear-gradient(to right, #fff, #999);
+
   /* Spacing */
   --space-xs: 0.25rem;
   --space-sm: 0.5rem;
@@ -51,7 +58,59 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   min-height: 100vh;
+  overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+}
+
+/* Light Mode Overrides */
+.light-theme {
+  --bg-primary: #f8fafc;
+  /* Slate 50 */
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f1f5f9;
+  /* Slate 100 */
+
+  --text-primary: #0f172a;
+  /* Slate 900 */
+  --text-secondary: #475569;
+  /* Slate 600 */
+  --text-tertiary: #64748b;
+  /* Slate 500 */
+
+  --border-color: #e2e8f0;
+  /* Slate 200 */
+
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(226, 232, 240, 0.8);
+
+  --accent-primary: #4f46e5;
+  /* Indigo 600 - slightly darker for contrast */
+  --accent-hover: #4338ca;
+  --accent-glow: rgba(79, 70, 229, 0.15);
+
+  /* Re-define shadow for light mode transparency */
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+
+  /* Input styles for light mode */
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  /* Slate 300 */
+  --input-focus-bg: #ffffff;
+
+  /* Text Gradient for light mode (Strong Indigo -> Purple) */
+  --heading-gradient: linear-gradient(to right, #4338ca, #7c3aed);
+}
+
+.light-theme body {
+  background-image:
+    radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.05), transparent 25%),
+    radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05), transparent 25%);
+}
+
+.light-theme .glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--card-shadow);
 }
 
 #root {
@@ -80,7 +139,7 @@ body {
 }
 
 .text-gradient {
-  background: linear-gradient(to right, #fff, #999);
+  background: var(--heading-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
