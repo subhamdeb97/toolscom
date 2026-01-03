@@ -2,19 +2,23 @@ import { useState } from 'react';
 import { FileJson, Copy, Trash2, Minimize2, Maximize2 } from 'lucide-react';
 import ToolLayout from '../../components/Tools/ToolLayout';
 import Button from '../../components/UI/Button';
+import { useAuth } from '../../context/AuthContext';
 import styles from './SharedToolStyles.module.css';
 
 const JsonFormatter = () => {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [error, setError] = useState(null);
+    const { saveHistory } = useAuth();
 
     const formatJson = () => {
         try {
             if (!input.trim()) return;
             const parsed = JSON.parse(input);
-            setOutput(JSON.stringify(parsed, null, 2));
+            const formatted = JSON.stringify(parsed, null, 2);
+            setOutput(formatted);
             setError(null);
+            saveHistory('json-formatter', input, formatted, { action: 'format' });
         } catch (err) {
             setError('Invalid JSON: ' + err.message);
             setOutput('');
@@ -25,8 +29,10 @@ const JsonFormatter = () => {
         try {
             if (!input.trim()) return;
             const parsed = JSON.parse(input);
-            setOutput(JSON.stringify(parsed));
+            const minified = JSON.stringify(parsed);
+            setOutput(minified);
             setError(null);
+            saveHistory('json-formatter', input, minified, { action: 'minify' });
         } catch (err) {
             setError('Invalid JSON: ' + err.message);
             setOutput('');

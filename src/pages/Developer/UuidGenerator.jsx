@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { Shuffle, Copy, RefreshCw } from 'lucide-react';
 import ToolLayout from '../../components/Tools/ToolLayout';
 import Button from '../../components/UI/Button';
+import { useAuth } from '../../context/AuthContext';
 import styles from './SharedToolStyles.module.css';
 
 const UuidGenerator = () => {
     const [uuids, setUuids] = useState([]);
     const [count, setCount] = useState(1);
+    const { saveHistory } = useAuth();
 
     const generateUuid = () => {
         return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
@@ -18,6 +20,7 @@ const UuidGenerator = () => {
     const generate = () => {
         const newUuids = Array(Number(count)).fill(0).map(generateUuid);
         setUuids(newUuids);
+        saveHistory('uuid-gen', count.toString(), newUuids.join('\n'));
     };
 
     return (

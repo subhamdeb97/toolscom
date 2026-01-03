@@ -9,6 +9,7 @@ const SqlFormatter = () => {
             description="Format and beautify Standard SQL queries."
             icon={Database}
             onFormat={formatSql}
+            toolId="sql-formatter"
             inputPlaceholder="SELECT * FROM users WHERE id = 1"
         />
     );

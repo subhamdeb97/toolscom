@@ -39,6 +39,7 @@ const Base64Tool = () => {
                 description="Encode text to Base64 or decode Base64 strings."
                 icon={Hash}
                 onFormat={process}
+                toolId="base64"
                 inputPlaceholder={mode === 'encode' ? "Text to encode..." : "Base64 string..."}
             />
         </div>

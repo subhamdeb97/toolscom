@@ -55,8 +55,44 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
     };
 
+    const saveHistory = async (toolId, input, output, metadata = {}) => {
+        if (!user) return; // Only save if logged in
+        try {
+            const res = await fetch('/api/history', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.token}`
+                },
+                body: JSON.stringify({ toolId, input, output, metadata })
+            });
+            if (!res.ok) {
+                console.error('Failed to save history:', await res.text());
+            }
+        } catch (err) {
+            console.error('Error saving history:', err);
+        }
+    };
+
+    const getHistory = async () => {
+        if (!user) return [];
+        try {
+            const res = await fetch('/api/history', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            });
+            if (!res.ok) return [];
+            const data = await res.json();
+            return data;
+        } catch (err) {
+            console.error('Error fetching history:', err);
+            return [];
+        }
+    };
+
     return (
-        <AuthContext.Provider value={{ user, login, register, logout, loading }}>
+        <AuthContext.Provider value={{ user, login, register, logout, saveHistory, getHistory, loading }}>
             {children}
         </AuthContext.Provider>
     );

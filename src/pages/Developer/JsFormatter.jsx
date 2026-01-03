@@ -9,6 +9,7 @@ const JsFormatter = () => {
             description="Beautify JavaScript code."
             icon={Code}
             onFormat={formatCode}
+            toolId="js-formatter"
             inputPlaceholder="function test() { return true; }"
         />
     );

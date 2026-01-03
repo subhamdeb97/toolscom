@@ -35,6 +35,7 @@ const UrlEncoder = () => {
                 description="Encode special characters or decode URL strings."
                 icon={Globe}
                 onFormat={process}
+                toolId="url-encoder"
                 inputPlaceholder={mode === 'encode' ? "URL to encode..." : "URL to decode..."}
             />
         </div>

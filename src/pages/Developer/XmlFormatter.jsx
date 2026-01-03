@@ -9,6 +9,7 @@ const XmlFormatter = () => {
             description="Beautify and format generic XML data."
             icon={FileCode}
             onFormat={formatXml}
+            toolId="xml-formatter"
             inputPlaceholder="<root><child>value</child></root>"
         />
     );

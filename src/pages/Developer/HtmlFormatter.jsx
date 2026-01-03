@@ -9,6 +9,7 @@ const HtmlFormatter = () => {
             description="Format and indent HTML code."
             icon={Code}
             onFormat={formatXml}
+            toolId="html-formatter"
             inputPlaceholder="<div><p>Hello</p></div>"
         />
     );

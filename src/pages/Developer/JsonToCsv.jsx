@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { FileCode, ArrowRight, Copy, Trash2 } from 'lucide-react';
 import ToolLayout from '../../components/Tools/ToolLayout';
 import Button from '../../components/UI/Button';
+import { useAuth } from '../../context/AuthContext';
 import styles from './SharedToolStyles.module.css';
 
 const JsonToCsv = () => {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [error, setError] = useState(null);
+    const { saveHistory } = useAuth();
 
     const convertToCsv = () => {
         try {
@@ -28,8 +30,10 @@ const JsonToCsv = () => {
                 }).join(',');
             });
 
-            setOutput([headers.join(','), ...rows].join('\n'));
+            const csvOutput = [headers.join(','), ...rows].join('\n');
+            setOutput(csvOutput);
             setError(null);
+            saveHistory('json-csv', input, csvOutput);
         } catch (err) {
             setError('Invalid JSON: ' + err.message);
             setOutput('');

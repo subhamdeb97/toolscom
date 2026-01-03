@@ -2,12 +2,14 @@ import { useState } from 'react';
 import { Lock, RefreshCw, Copy } from 'lucide-react';
 import ToolLayout from '../../components/Tools/ToolLayout';
 import Button from '../../components/UI/Button';
+import { useAuth } from '../../context/AuthContext';
 import styles from '../Developer/SharedToolStyles.module.css';
 
 const PasswordGenerator = () => {
     const [len, setLen] = useState(16);
     const [opt, setOpt] = useState({ upper: true, lower: true, num: true, sym: true });
     const [pass, setPass] = useState('');
+    const { saveHistory } = useAuth();
 
     const generate = () => {
         const chars = {
@@ -31,6 +33,7 @@ const PasswordGenerator = () => {
             res += pool[arr[i] % pool.length];
         }
         setPass(res);
+        saveHistory('pass-gen', JSON.stringify({ length: len, options: opt }), res);
     };
 
     return (

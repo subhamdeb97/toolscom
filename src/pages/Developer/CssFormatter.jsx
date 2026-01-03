@@ -10,6 +10,7 @@ const CssFormatter = () => {
             icon={Code}
             onFormat={formatCss}
             onMinify={minifyCss}
+            toolId="css-formatter"
             inputPlaceholder="body { color: red; }"
         />
     );

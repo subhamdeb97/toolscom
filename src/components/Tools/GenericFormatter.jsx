@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { FileCode, ArrowRight, Copy, Trash2, Minimize2, Maximize2 } from 'lucide-react';
 import ToolLayout from './ToolLayout';
 import Button from '../UI/Button';
+import { useAuth } from '../../context/AuthContext';
 import styles from '../../pages/Developer/SharedToolStyles.module.css';
 
 const GenericFormatter = ({
@@ -10,12 +11,14 @@ const GenericFormatter = ({
     icon: Icon = FileCode,
     onFormat,
     onMinify,
+    toolId,
     inputPlaceholder = 'Paste your code here...',
     outputPlaceholder = 'Formatted code will appear here...'
 }) => {
     const [input, setInput] = useState('');
     const [output, setOutput] = useState('');
     const [error, setError] = useState(null);
+    const { saveHistory } = useAuth();
 
     const handleFormat = () => {
         try {
@@ -23,6 +26,7 @@ const GenericFormatter = ({
             const result = onFormat(input);
             setOutput(result);
             setError(null);
+            if (toolId) saveHistory(toolId, input, result, { action: 'format' });
         } catch (err) {
             setError('Error formatting: ' + err.message);
         }
@@ -35,6 +39,7 @@ const GenericFormatter = ({
             const result = onMinify(input);
             setOutput(result);
             setError(null);
+            if (toolId) saveHistory(toolId, input, result, { action: 'minify' });
         } catch (err) {
             setError('Error minifying: ' + err.message);
         }
