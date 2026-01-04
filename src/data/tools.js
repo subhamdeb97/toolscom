@@ -2,7 +2,7 @@ import {
     Code, Type, Image, Globe, Activity,
     FileJson, FileCode, Database, Terminal,
     AlignLeft, Search, Shuffle, Hash, Lock,
-    Cpu, Clock, Calendar, Calculator
+    Cpu, Clock, Calendar, Calculator, RotateCcw, FileType
 } from 'lucide-react';
 
 export const tools = [
@@ -22,7 +22,12 @@ export const tools = [
     { id: 'jwt-debug', title: 'JWT Debugger', description: 'Decode and debug JWT tokens', category: 'Developer', path: '/dev/jwt-debugger', icon: Lock },
     { id: 'cron-gen', title: 'Cron Generator', description: 'Create cron job schedules', category: 'Developer', path: '/dev/cron-generator', icon: Clock },
     { id: 'regex-test', title: 'Regex Tester', description: 'Test regular expressions', category: 'Developer', path: '/dev/regex-tester', icon: Search },
+    { id: 'number-base-converter', title: 'Number Base Converter', description: 'Convert between binary, decimal, hex', category: 'Developer', path: '/dev/number-base-converter', icon: Cpu },
     { id: 'uuid-gen', title: 'UUID Generator', description: 'Generate UUIDs and GUIDs', category: 'Developer', path: '/dev/uuid-generator', icon: Shuffle },
+    { id: 'timestamp', title: 'Timestamp Converter', description: 'Convert Unix timestamps', category: 'Developer', path: '/dev/timestamp', icon: Clock },
+
+    // File Converter Tools
+    { id: 'file-converter', title: 'File Converter', description: 'Convert files between formats', category: 'File Converter', path: '/file-converter', icon: FileType },
     { id: 'timestamp', title: 'Timestamp Converter', description: 'Convert Unix timestamps', category: 'Developer', path: '/dev/timestamp', icon: Clock },
 
     // Text & String Manipulation
@@ -32,6 +37,7 @@ export const tools = [
     { id: 'random-string', title: 'Random String', description: 'Generate random strings', category: 'Text', path: '/text/random-string', icon: Shuffle },
     { id: 'text-binary', title: 'Text to Binary', description: 'Convert text to binary', category: 'Text', path: '/text/text-binary', icon: Cpu },
     { id: 'ascii-art', title: 'ASCII Art', description: 'Generate ASCII art', category: 'Text', path: '/text/ascii-art', icon: Type },
+    { id: 'text-reverser', title: 'Text Reverser', description: 'Reverse text or word order', category: 'Text', path: '/text/text-reverser', icon: RotateCcw },
 
     // Image & Media Tools
     { id: 'img-compress', title: 'Image Compressor', description: 'Compress PNG/JPG/WebP', category: 'Image', path: '/image/compressor', icon: Image },
@@ -39,6 +45,7 @@ export const tools = [
     { id: 'img-base64', title: 'Image to Base64', description: 'Convert image to Base64', category: 'Image', path: '/image/to-base64', icon: Image },
     { id: 'base64-to-img', title: 'Base64 to Image', description: 'Convert Base64 to image', category: 'Image', path: '/image/base64-to-image', icon: Image },
     { id: 'img-ocr', title: 'Smart Text Extractor', description: 'Extract text from Images (OCR) or Excel files', category: 'Image', path: '/image/ocr', icon: Image },
+    { id: 'color-converter', title: 'Color Converter', description: 'Convert between HEX, RGB, HSL', category: 'Image', path: '/image/color-converter', icon: Image },
     { id: 'qr-code', title: 'QR Generator', description: 'Create and download QR codes', category: 'Image', path: '/qr-code', icon: Image, status: 'ready' },
     { id: 'color-picker', title: 'Color Picker', description: 'Pick and convert colors', category: 'Image', path: '/image/color-picker', icon: Image },
 

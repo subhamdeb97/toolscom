@@ -52,7 +52,7 @@ const Sidebar = ({ isOpen, onClose }) => {
             <User size={32} />
           </div>
           <div className={styles.userInfo}>
-            <h3 className={styles.username}>{user ? user.username : 'Guest User'}</h3>
+            <h3 className={styles.username}>{user ? user.email : 'Guest User'}</h3>
             <p className={styles.role}>{user ? 'Premium Member' : 'Standard Access'}</p>
           </div>
         </div>

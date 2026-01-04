@@ -8,40 +8,42 @@ export const AuthProvider = ({ children }) => {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        const username = localStorage.getItem('username');
-        if (token && username) {
-            setUser({ username, token });
+        const email = localStorage.getItem('email');
+        if (token && email) {
+            setUser({ email, token });
         }
         setLoading(false);
     }, []);
 
-    const login = async (username, password) => {
+    const login = async (email, password) => {
         try {
             const res = await fetch('/auth/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify({ email, password })
             });
             const data = await res.json();
             if (!res.ok) throw new Error(data.error || 'Login failed');
 
             localStorage.setItem('token', data.token);
-            localStorage.setItem('username', data.username);
-            setUser({ username: data.username, token: data.token });
+            localStorage.setItem('email', data.email);
+            setUser({ email: data.email, token: data.token });
             return true;
         } catch (err) {
             throw err;
         }
     };
 
-    const register = async (username, password) => {
+    const register = async (email, mobile, password) => {
         try {
+            console.log('Registering with:', { email, mobile, password });
             const res = await fetch('/auth/register', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
+                body: JSON.stringify({ email, mobile, password })
             });
             const data = await res.json();
+            console.log('Register response:', res.status, data);
             if (!res.ok) throw new Error(data.error || 'Registration failed');
             return true;
         } catch (err) {
@@ -51,7 +53,7 @@ export const AuthProvider = ({ children }) => {
 
     const logout = () => {
         localStorage.removeItem('token');
-        localStorage.removeItem('username');
+        localStorage.removeItem('email');
         setUser(null);
     };
 

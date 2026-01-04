@@ -7,7 +7,7 @@ import styles from './LoginPage.module.css';
 
 const LoginPage = () => {
     const [isLogin, setIsLogin] = useState(true);
-    const [formData, setFormData] = useState({ username: '', password: '' });
+    const [formData, setFormData] = useState({ email: '', mobile: '', password: '' });
     const [error, setError] = useState('');
     const { login, register } = useAuth();
     const navigate = useNavigate();
@@ -15,17 +15,19 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError('');
+        console.log('Submitting form:', isLogin ? 'login' : 'register', formData);
         try {
             if (isLogin) {
-                await login(formData.username, formData.password);
+                await login(formData.email, formData.password);
                 navigate('/');
             } else {
-                await register(formData.username, formData.password);
+                await register(formData.email, formData.mobile, formData.password);
                 setIsLogin(true); // Switch to login after success
                 setError('Account created! Please log in.');
-                setFormData({ username: '', password: '' });
+                setFormData({ email: '', mobile: '', password: '' });
             }
         } catch (err) {
+            console.log('Error:', err.message);
             setError(err.message);
         }
     };
@@ -44,16 +46,28 @@ const LoginPage = () => {
 
                 <form onSubmit={handleSubmit} className={styles.form}>
                     <div className={styles.inputGroup}>
-                        <User size={18} className={styles.inputIcon} />
+                        <Mail size={18} className={styles.inputIcon} />
                         <input
-                            type="text"
-                            placeholder="Username"
+                            type="email"
+                            placeholder="Email Address"
                             className={styles.input}
-                            value={formData.username}
-                            onChange={e => setFormData({ ...formData, username: e.target.value })}
+                            value={formData.email}
+                            onChange={e => setFormData({ ...formData, email: e.target.value })}
                             required
                         />
                     </div>
+                    {!isLogin && (
+                        <div className={styles.inputGroup}>
+                            <User size={18} className={styles.inputIcon} />
+                            <input
+                                type="tel"
+                                placeholder="Mobile Number (optional)"
+                                className={styles.input}
+                                value={formData.mobile}
+                                onChange={e => setFormData({ ...formData, mobile: e.target.value })}
+                            />
+                        </div>
+                    )}
                     <div className={styles.inputGroup}>
                         <Lock size={18} className={styles.inputIcon} />
                         <input
@@ -73,7 +87,7 @@ const LoginPage = () => {
 
                 <div className={styles.footer}>
                     {isLogin ? "Don't have an account? " : "Already have an account? "}
-                    <button onClick={() => { setIsLogin(!isLogin); setError(''); }} className={styles.linkBtn}>
+                    <button onClick={() => { setIsLogin(!isLogin); setError(''); setFormData({ email: '', mobile: '', password: '' }); }} className={styles.linkBtn}>
                         {isLogin ? 'Sign Up' : 'Sign In'}
                     </button>
                 </div>

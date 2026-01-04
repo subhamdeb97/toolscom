@@ -26,6 +26,8 @@ import UuidGenerator from './pages/Developer/UuidGenerator';
 import TimestampConverter from './pages/Developer/TimestampConverter';
 import CronGenerator from './pages/Developer/CronGenerator';
 import RegexTester from './pages/Developer/RegexTester';
+import NumberBaseConverter from './pages/Developer/NumberBaseConverter';
+import FileConverter from './pages/FileConverter/FileConverter';
 
 // Text Tools
 import CaseConverter from './pages/Text/CaseConverter';
@@ -34,6 +36,7 @@ import LoremIpsum from './pages/Text/LoremIpsum';
 import TextToBinary from './pages/Text/TextToBinary';
 import RandomString from './pages/Text/RandomString';
 import AsciiArt from './pages/Text/AsciiArt';
+import TextReverser from './pages/Text/TextReverser';
 
 // Security Tools
 import PasswordGenerator from './pages/Security/PasswordGenerator';
@@ -51,6 +54,7 @@ import ImageToBase64 from './pages/Image/ImageToBase64';
 import ImageCompressor from './pages/Image/ImageCompressor';
 import OcrTool from './pages/Image/OcrTool';
 import Base64ToImage from './pages/Image/Base64ToImage';
+import ColorConverter from './pages/Image/ColorConverter';
 
 // Math Tools
 import UnitConverter from './pages/Math/UnitConverter';
@@ -83,6 +87,8 @@ const COMPONENT_MAP = {
   'timestamp': TimestampConverter,
   'jwt-debug': Base64Tool,
   'regex-test': RegexTester,
+  'number-base-converter': NumberBaseConverter,
+  'file-converter': FileConverter,
   'cron-gen': CronGenerator,
 
   // Text
@@ -92,6 +98,7 @@ const COMPONENT_MAP = {
   'text-binary': TextToBinary,
   'random-string': RandomString,
   'ascii-art': AsciiArt,
+  'text-reverser': TextReverser,
 
   // Security
   'pass-gen': PasswordGenerator,
@@ -109,6 +116,7 @@ const COMPONENT_MAP = {
   'img-compress': ImageCompressor,
   'img-ocr': OcrTool,
   'base64-to-img': Base64ToImage,
+  'color-converter': ColorConverter,
 
   // Math
   'unit-convert': UnitConverter,
